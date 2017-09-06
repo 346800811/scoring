@@ -10,5 +10,5 @@ public interface VScoreMapper {
 	 * @param type
 	 * @return
 	 */
-	List<VScore> list(Integer type);
+	List<VScore> query(Integer type);
 }

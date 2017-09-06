@@ -46,4 +46,10 @@ public class Score {
 	public void setScore(Float score) {
 		this.score = score;
 	}
+
+	@Override
+	public String toString() {
+		return "Score [id=" + id + ", projId=" + projId + ", markerId=" + markerId + ", userId=" + userId + ", score=" + score + "]";
+	}
+
 }

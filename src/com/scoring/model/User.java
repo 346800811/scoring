@@ -37,4 +37,10 @@ public class User {
 	public void setPasswd(String passwd) {
 		this.passwd = passwd == null ? null : passwd.trim();
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", type=" + type + ", passwd=" + passwd + "]";
+	}
+
 }

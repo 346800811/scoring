@@ -10,7 +10,7 @@ public interface VScoreService {
 	 * @param type
 	 * @return
 	 */
-	List<VScore> list(Integer type);
+	List<VScore> query(Integer type);
 
 	/**
 	 * 查询某类型的评分矩阵

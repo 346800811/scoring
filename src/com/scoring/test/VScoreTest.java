@@ -22,7 +22,7 @@ public class VScoreTest {
 
 	@Test
 	public void testVScoreList() {
-		List<VScore> objs = vScoreMapper.list(3);
+		List<VScore> objs = vScoreMapper.query(3);
 		for (VScore c : objs) {
 			System.out.println(c.getScore());
 		}
@@ -30,7 +30,7 @@ public class VScoreTest {
 
 	@Test
 	public void testVScoreList2() {
-		List<VScore> objs = vScoreService.list(3);
+		List<VScore> objs = vScoreService.query(3);
 		for (VScore c : objs) {
 			System.out.println(c.getScore());
 		}

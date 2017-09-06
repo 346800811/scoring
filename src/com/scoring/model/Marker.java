@@ -37,4 +37,10 @@ public class Marker {
 	public void setType(Integer type) {
 		this.type = type;
 	}
+
+	@Override
+	public String toString() {
+		return "Marker [id=" + id + ", name=" + name + ", weight=" + weight + ", type=" + type + "]";
+	}
+
 }

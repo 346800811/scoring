@@ -20,4 +20,9 @@ public class ProjType {
 		this.name = name == null ? null : name.trim();
 	}
 
+	@Override
+	public String toString() {
+		return "ProjType [type=" + type + ", name=" + name + "]";
+	}
+
 }

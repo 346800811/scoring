@@ -1,88 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.scoring.mapper.MarkerMapper">
-  <resultMap id="BaseResultMap" type="com.scoring.model.Marker">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="weight" jdbcType="INTEGER" property="weight" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, name, weight, type
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from sc_marker
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from sc_marker
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.scoring.model.Marker">
-    insert into sc_marker (id, name, weight, 
-      type)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{weight,jdbcType=INTEGER}, 
-      #{type,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.scoring.model.Marker">
-    insert into sc_marker
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="weight != null">
-        weight,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="weight != null">
-        #{weight,jdbcType=INTEGER},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.scoring.model.Marker">
-    update sc_marker
-    <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="weight != null">
-        weight = #{weight,jdbcType=INTEGER},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.scoring.model.Marker">
-    update sc_marker
-    set name = #{name,jdbcType=VARCHAR},
-      weight = #{weight,jdbcType=INTEGER},
-      type = #{type,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-      <select id="query" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from sc_marker
-    where type = #{type,jdbcType=INTEGER}
-  </select>
+	<resultMap id="BaseResultMap" type="com.scoring.model.Marker">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="weight" jdbcType="INTEGER" property="weight" />
+		<result column="type" jdbcType="INTEGER" property="type" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, name, weight, type
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from sc_marker
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from sc_marker
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.scoring.model.Marker">
+		insert into sc_marker (id, name, weight,
+		type)
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		#{weight,jdbcType=INTEGER},
+		#{type,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="com.scoring.model.Marker">
+		insert into sc_marker
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="weight != null">
+				weight,
+			</if>
+			<if test="type != null">
+				type,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="weight != null">
+				#{weight,jdbcType=INTEGER},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.scoring.model.Marker">
+		update sc_marker
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="weight != null">
+				weight = #{weight,jdbcType=INTEGER},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.scoring.model.Marker">
+		update sc_marker
+		set name = #{name,jdbcType=VARCHAR},
+		weight = #{weight,jdbcType=INTEGER},
+		type = #{type,jdbcType=INTEGER}
+		where
+		id = #{id,jdbcType=INTEGER}
+	</update>
+	<select id="query" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from sc_marker
+		where type = #{type,jdbcType=INTEGER}
+	</select>
 </mapper>

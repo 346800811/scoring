@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean check(User user) {
 		List<User> check = userMapper.check(user);
-		if (check == null || check.size() == 0){
+		if (check == null || check.size() == 0) {
 			return false;
 		} else {
 			user.setId(check.get(0).getId());

@@ -11,7 +11,7 @@
 		<result column="mname" jdbcType="VARCHAR" property="mname" />
 		<result column="typename" jdbcType="VARCHAR" property="typename" />
 	</resultMap>
-	<select id="list" resultType="VScore">
+	<select id="query" resultType="VScore">
 		select * from sc_v_score where type = #{type,jdbcType=INTEGER}
 	</select>
 </mapper>

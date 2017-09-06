@@ -28,4 +28,10 @@ public class Proj {
 	public void setType(Integer type) {
 		this.type = type;
 	}
+
+	@Override
+	public String toString() {
+		return "Proj [id=" + id + ", name=" + name + ", type=" + type + "]";
+	}
+
 }

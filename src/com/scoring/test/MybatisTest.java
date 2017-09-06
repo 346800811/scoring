@@ -38,7 +38,7 @@ public class MybatisTest {
 	}
 	@Test
 	public void testVScoreList() {
-		List<VScore> cs = vScoreMapper.list(3);
+		List<VScore> cs = vScoreMapper.query(3);
 		for (VScore c : cs) {
 			System.out.println(c.getMname()+" " +c.getPname() + " " + c.getScore());
 		}

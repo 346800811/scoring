@@ -45,6 +45,7 @@ public class UserController {
 		mav.setViewName("login");
 		return mav;
 	}
+
 	@RequestMapping("/login/in")
 	public ModelAndView logIn(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
@@ -55,17 +56,16 @@ public class UserController {
 		user.setName(username);
 		user.setPasswd(passwd);
 		user.setType(Integer.parseInt(projtype));
-		if(userService.check(user)){ // 用户、密码、类型验证通过
+		if (userService.check(user)) { // 用户、密码、类型验证通过
 			logger.info("login true");
-			PublicTools.setCurrentUser(request,user, logger);
-			mav.addObject("result",true);
+			PublicTools.setCurrentUser(request, user, logger);
+			mav.addObject("result", true);
 			mav.setViewName("loginSuccess");
 		} else {
 			logger.info("login false");
-			mav.addObject("result",false);
+			mav.addObject("result", false);
 			mav.setViewName("loginSuccess");
 		}
-
 		return mav;
 	}
 
