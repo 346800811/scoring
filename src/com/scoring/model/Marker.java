@@ -1,5 +1,9 @@
 package com.scoring.model;
 
+/**
+ * 项目评分指标
+ * @author JianDe
+ */
 public class Marker {
 	private Integer id;
 	private String name;

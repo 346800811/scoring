@@ -31,16 +31,14 @@ public class MybatisTest {
 	public void testList() {
 		List<User> cs = categoryMapper.list();
 		for (User c : cs) {
-			System.out.println(c.getName());
-			System.out.println(c.getPasswd());
-			System.out.println(c.getType());
+			System.out.println(c);
 		}
 	}
 	@Test
 	public void testVScoreList() {
 		List<VScore> cs = vScoreMapper.query(3);
 		for (VScore c : cs) {
-			System.out.println(c.getMname()+" " +c.getPname() + " " + c.getScore());
+			System.out.println(c);
 		}
 	}
 

@@ -19,10 +19,6 @@ public interface UserMapper {
 
 	List<User> list();
 
-	/**
-	 * 查询是否有匹配的用户、密码、类型
-	 * @param user
-	 * @return
-	 */
+	/** 查询是否有匹配的用户、密码、类型 */
 	List<User> check(User user);
 }

@@ -17,11 +17,8 @@ public interface MarkerMapper {
 
 	int updateByPrimaryKey(Marker record);
 
-	/**
-	 * 查询某类型的所有评分指标
-	 * 
-	 * @param type
-	 * @return
-	 */
+	List<Marker> list();
+
+	/** 查询某类型的所有评分指标 */
 	List<Marker> query(Integer type);
 }

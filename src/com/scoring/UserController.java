@@ -17,11 +17,15 @@ import com.scoring.model.User;
 import com.scoring.service.ProjTypeService;
 import com.scoring.service.UserService;
 
+/**
+ * 用户控制层
+ * 
+ * @author JianDe
+ */
 @Controller
 @RequestMapping("/user")
 public class UserController {
 	protected final Log logger = LogFactory.getLog(this.getClass());
-
 	@Autowired
 	UserService userService;
 	@Autowired

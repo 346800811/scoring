@@ -1,5 +1,7 @@
 package com.scoring.mapper;
 
+import java.util.List;
+
 import com.scoring.model.Score;
 
 public interface ScoreMapper {
@@ -14,4 +16,6 @@ public interface ScoreMapper {
 	int updateByPrimaryKeySelective(Score record);
 
 	int updateByPrimaryKey(Score record);
+
+	List<Score> list();
 }

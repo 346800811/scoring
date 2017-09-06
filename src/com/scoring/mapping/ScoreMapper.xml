@@ -90,4 +90,9 @@
 		score = #{score,jdbcType=REAL}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
+	<select id="list" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from sc_score
+	</select>
 </mapper>

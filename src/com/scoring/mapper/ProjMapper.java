@@ -17,11 +17,8 @@ public interface ProjMapper {
 
 	int updateByPrimaryKey(Proj record);
 
-	/**
-	 * 查询某类型的所有项目
-	 * 
-	 * @param type
-	 * @return
-	 */
+	List<Proj> list();
+
+	/** 查询某类型的所有项目 */
 	List<Proj> query(Integer type);
 }

@@ -8,19 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.scoring.model.Marker;
-import com.scoring.service.MarkerService;
+import com.scoring.mapper.ScoreMapper;
+import com.scoring.model.Score;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
-public class MarkerTest {
+public class ScoreTest {
 	@Autowired
-	private MarkerService markerService;
+	private ScoreMapper scoreMapper;
 
 	@Test
-	public void testMarkerList() {
-		List<Marker> objs = markerService.query(3);
-		for (Marker c : objs) {
+	public void testProjList() {
+		List<Score> objs = scoreMapper.list();
+		for (Score c : objs) {
 			System.out.println(c);
 		}
 	}

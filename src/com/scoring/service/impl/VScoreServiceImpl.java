@@ -5,11 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.scoring.mapper.MarkerMapper;
-import com.scoring.mapper.ProjMapper;
 import com.scoring.mapper.VScoreMapper;
-import com.scoring.model.Marker;
-import com.scoring.model.Proj;
 import com.scoring.model.VScore;
 import com.scoring.service.VScoreService;
 
@@ -17,10 +13,11 @@ import com.scoring.service.VScoreService;
 public class VScoreServiceImpl implements VScoreService {
 	@Autowired
 	VScoreMapper vScoreMapper;
-	@Autowired
-	ProjMapper projMapper;
-	@Autowired
-	MarkerMapper markerMapper;
+
+	@Override
+	public List<VScore> list() {
+		return vScoreMapper.list();
+	}
 
 	@Override
 	public List<VScore> query(Integer type) {
@@ -28,14 +25,12 @@ public class VScoreServiceImpl implements VScoreService {
 	}
 
 	@Override
-	public double[][] getArr(Integer type) {
-		List<Marker> marks = markerMapper.query(type);
-		List<Proj> projs = projMapper.query(type);
+	public double[][] getArr(Integer type, int projs, int marks) {
 		List<VScore> list = this.query(type);
-		double[][] res = new double[projs.size()][marks.size()];
-		for (int i = 0; i < projs.size(); i++) {
-			for (int j = 0; j < marks.size(); j++) {
-				Float score = list.get(i * marks.size() + j).getScore();
+		double[][] res = new double[projs][marks];
+		for (int i = 0; i < projs; i++) {
+			for (int j = 0; j < marks; j++) {
+				Float score = list.get(i * marks + j).getScore();
 				res[i][j] = score == null ? -1 : score;
 			}
 		}

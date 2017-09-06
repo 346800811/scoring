@@ -1,5 +1,9 @@
 package com.scoring.model;
 
+/**
+ * 项目、类别评分视图
+ * @author JianDe
+ */
 public class VScore {
 	private Integer pid;
 	private Integer mid;

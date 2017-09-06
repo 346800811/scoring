@@ -1,5 +1,9 @@
 package com.scoring.model;
 
+/**
+ * 专家评分
+ * @author JianDe
+ */
 public class Score {
 	private Integer id;
 	private Integer projId;

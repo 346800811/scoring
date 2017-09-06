@@ -1,5 +1,9 @@
 package com.scoring.model;
 
+/**
+ * 项目类别
+ * @author JianDe
+ */
 public class ProjType {
 	private Integer type;
 	private String name;

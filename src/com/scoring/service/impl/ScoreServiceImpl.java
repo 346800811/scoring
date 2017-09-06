@@ -16,7 +16,7 @@ public class ScoreServiceImpl implements ScoreService {
 
 	@Override
 	public List<Score> list() {
-		return null;
+		return scoreMapper.list();
 	}
 
 }

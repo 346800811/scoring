@@ -82,7 +82,7 @@
 	<select id="list" resultType="User">
 		select * from sc_user
 	</select>
-	<select id="check" parameterType="com.scoring.model.User" resultType="User">
+	<select id="check" parameterType="com.scoring.model.User" resultType="BaseResultMap">
 		select * from sc_user where name = #{name,jdbcType=VARCHAR} and passwd = #{passwd,jdbcType=VARCHAR} and
 		type = #{type,jdbcType=INTEGER}
 	</select>

@@ -81,6 +81,11 @@
 		where
 		id = #{id,jdbcType=INTEGER}
 	</update>
+	<select id="list" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from sc_marker
+	</select>
 	<select id="query" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
