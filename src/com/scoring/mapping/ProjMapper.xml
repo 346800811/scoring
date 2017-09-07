@@ -10,9 +10,7 @@
 		id, name, type
 	</sql>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List" />
-		from sc_proj
+		select <include refid="Base_Column_List" /> from sc_proj
 		where id = #{id,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -20,63 +18,40 @@
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.scoring.model.Proj">
-		insert into sc_proj (id, name, type
-		)
-		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}
-		)
+		insert into sc_proj (id, name, type )
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER})
 	</insert>
 	<insert id="insertSelective" parameterType="com.scoring.model.Proj">
 		insert into sc_proj
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				id,
-			</if>
-			<if test="name != null">
-				name,
-			</if>
-			<if test="type != null">
-				type,
-			</if>
+			<if test="id != null"> id, </if>
+			<if test="name != null"> name, </if>
+			<if test="type != null"> type, </if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				#{id,jdbcType=INTEGER},
-			</if>
-			<if test="name != null">
-				#{name,jdbcType=VARCHAR},
-			</if>
-			<if test="type != null">
-				#{type,jdbcType=INTEGER},
-			</if>
+			<if test="id != null"> #{id,jdbcType=INTEGER}, </if>
+			<if test="name != null"> #{name,jdbcType=VARCHAR}, </if>
+			<if test="type != null"> #{type,jdbcType=INTEGER}, </if>
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective" parameterType="com.scoring.model.Proj">
 		update sc_proj
 		<set>
-			<if test="name != null">
-				name = #{name,jdbcType=VARCHAR},
-			</if>
-			<if test="type != null">
-				type = #{type,jdbcType=INTEGER},
-			</if>
+			<if test="name != null"> name = #{name,jdbcType=VARCHAR}, </if>
+			<if test="type != null"> type = #{type,jdbcType=INTEGER}, </if>
 		</set>
 		where id = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.scoring.model.Proj">
 		update sc_proj
-		set name = #{name,jdbcType=VARCHAR},
-		type = #{type,jdbcType=INTEGER}
+		set name = #{name,jdbcType=VARCHAR}, type = #{type,jdbcType=INTEGER}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
-	<select id="list" resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List" />
-		from sc_proj
+	<select id="list" resultType="com.scoring.model.Proj">
+		select <include refid="Base_Column_List" /> from sc_proj
 	</select>
-	<select id="query" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List" />
-		from sc_proj
+	<select id="query" parameterType="java.lang.Integer" resultType="com.scoring.model.Proj">
+		select <include refid="Base_Column_List" /> from sc_proj
 		where type = #{type,jdbcType=INTEGER}
 	</select>
 </mapper>

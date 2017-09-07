@@ -28,12 +28,19 @@ public class MybatisTest {
 //	}
 
 	@Test
+	public void testUserMapperGet() {
+		User c = categoryMapper.selectByPrimaryKey(3);
+		System.out.println(c);
+	}
+
+	@Test
 	public void testList() {
 		List<User> cs = categoryMapper.list();
 		for (User c : cs) {
 			System.out.println(c);
 		}
 	}
+
 	@Test
 	public void testVScoreList() {
 		List<VScore> cs = vScoreMapper.query(3);

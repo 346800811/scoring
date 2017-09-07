@@ -12,9 +12,7 @@
 		id, proj_id, marker_id, user_id, score
 	</sql>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List" />
-		from sc_score
+		select <include refid="Base_Column_List" /> from sc_score
 		where id = #{id,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -22,77 +20,44 @@
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.scoring.model.Score">
-		insert into sc_score (id, proj_id, marker_id,
-		user_id, score)
+		insert into sc_score (id, proj_id, marker_id, user_id, score)
 		values (#{id,jdbcType=INTEGER}, #{projId,jdbcType=INTEGER}, #{markerId,jdbcType=INTEGER},
 		#{userId,jdbcType=INTEGER}, #{score,jdbcType=REAL})
 	</insert>
 	<insert id="insertSelective" parameterType="com.scoring.model.Score">
 		insert into sc_score
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				id,
-			</if>
-			<if test="projId != null">
-				proj_id,
-			</if>
-			<if test="markerId != null">
-				marker_id,
-			</if>
-			<if test="userId != null">
-				user_id,
-			</if>
-			<if test="score != null">
-				score,
-			</if>
+			<if test="id != null"> id, </if>
+			<if test="projId != null"> proj_id, </if>
+			<if test="markerId != null"> marker_id, </if>
+			<if test="userId != null"> user_id, </if>
+			<if test="score != null"> score, </if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				#{id,jdbcType=INTEGER},
-			</if>
-			<if test="projId != null">
-				#{projId,jdbcType=INTEGER},
-			</if>
-			<if test="markerId != null">
-				#{markerId,jdbcType=INTEGER},
-			</if>
-			<if test="userId != null">
-				#{userId,jdbcType=INTEGER},
-			</if>
-			<if test="score != null">
-				#{score,jdbcType=REAL},
-			</if>
+			<if test="id != null"> #{id,jdbcType=INTEGER}, </if>
+			<if test="projId != null"> #{projId,jdbcType=INTEGER}, </if>
+			<if test="markerId != null"> #{markerId,jdbcType=INTEGER}, </if>
+			<if test="userId != null"> #{userId,jdbcType=INTEGER}, </if>
+			<if test="score != null"> #{score,jdbcType=REAL}, </if>
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective" parameterType="com.scoring.model.Score">
 		update sc_score
 		<set>
-			<if test="projId != null">
-				proj_id = #{projId,jdbcType=INTEGER},
-			</if>
-			<if test="markerId != null">
-				marker_id = #{markerId,jdbcType=INTEGER},
-			</if>
-			<if test="userId != null">
-				user_id = #{userId,jdbcType=INTEGER},
-			</if>
-			<if test="score != null">
-				score = #{score,jdbcType=REAL},
-			</if>
+			<if test="projId != null"> proj_id = #{projId,jdbcType=INTEGER}, </if>
+			<if test="markerId != null"> marker_id = #{markerId,jdbcType=INTEGER}, </if>
+			<if test="userId != null"> user_id = #{userId,jdbcType=INTEGER}, </if>
+			<if test="score != null"> score = #{score,jdbcType=REAL}, </if>
 		</set>
 		where id = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.scoring.model.Score">
 		update sc_score
-		set proj_id = #{projId,jdbcType=INTEGER},
-		marker_id = #{markerId,jdbcType=INTEGER},
-		user_id = #{userId,jdbcType=INTEGER},
-		score = #{score,jdbcType=REAL}
+		set proj_id = #{projId,jdbcType=INTEGER}, marker_id = #{markerId,jdbcType=INTEGER},
+			user_id = #{userId,jdbcType=INTEGER}, score = #{score,jdbcType=REAL}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
-	<select id="list" resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List" />
-		from sc_score
+	<select id="list" resultType="com.scoring.model.Score">
+		select <include refid="Base_Column_List" /> from sc_score
 	</select>
 </mapper>

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.common.PublicTools;
 import com.scoring.model.Marker;
 import com.scoring.model.Proj;
 import com.scoring.service.MarkerService;
@@ -36,7 +37,8 @@ public class VScoreController {
 	@RequestMapping("/list")
 	public ModelAndView listVScore(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		int type = 3;
+		List<String> currentUser = PublicTools.getCurrentUser(request, logger);
+		int type = Integer.parseInt(currentUser.get(2));
 		List<Marker> marks = markerService.query(type);
 		List<Proj> projs = projService.query(type);
 		double[][] scarr = vScoreService.getArr(type, projs.size(), marks.size());

@@ -11,10 +11,14 @@
 		<result column="mname" jdbcType="VARCHAR" property="mname" />
 		<result column="typename" jdbcType="VARCHAR" property="typename" />
 	</resultMap>
-	<select id="list" resultType="BaseResultMap">
-		select * from sc_v_score
+	<sql id="Base_Column_List">
+		pid, mid, score, type, user_id, pname, mname, typename
+	</sql>
+	<select id="list" resultType="com.scoring.model.VScore">
+		select <include refid="Base_Column_List" /> from sc_v_score
 	</select>
-	<select id="query" resultType="BaseResultMap">
-		select * from sc_v_score where type = #{type,jdbcType=INTEGER}
+	<select id="query" resultType="com.scoring.model.VScore">
+		select <include refid="Base_Column_List" /> from sc_v_score
+		where type = #{type,jdbcType=INTEGER}
 	</select>
 </mapper>

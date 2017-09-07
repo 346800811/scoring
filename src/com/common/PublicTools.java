@@ -3,7 +3,6 @@ package com.common;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -15,7 +14,13 @@ import org.apache.commons.logging.Log;
 import org.springframework.util.StringUtils;
 
 public class PublicTools {
-
+	/**
+	 * 用户信息List<br>
+	 * 0 用户ID<br>
+	 * 1 用户名称<br>
+	 * 2 用户类型<br>
+	 * 3 登录时间
+	 */
 	public static List<String> getCurrentUser(HttpServletRequest request, Log logger) {
 		HttpSession session = request.getSession();
 		@SuppressWarnings("unchecked")
@@ -24,7 +29,6 @@ public class PublicTools {
 	}
 	/**
 	 * 向session中添加user信息
-	 * @param request
 	 */
 	public static List<String> setCurrentUser(HttpServletRequest request, com.scoring.model.User user, Log logger) {
 		HttpSession session = request.getSession();
@@ -43,12 +47,10 @@ public class PublicTools {
 
 	/**
 	 * 获取唯一标识（32位）
-	 * @return String
 	 */
 	public static String getUUID() {
 		UUID uuid = UUID.randomUUID();
-		String id = uuid.toString().replaceAll("-", "");
-		return id;
+		return uuid.toString().replaceAll("-", "");
 	}
 
 	/**
@@ -56,12 +58,7 @@ public class PublicTools {
 	 * @param format 时间格式,默认yyyy-MM-dd HH:mm:ss
 	 */
 	public static String getCurrentDate(String format){
-		SimpleDateFormat simpleDateFormat = Golbal.FORMAT_DATE_1;
-		if(!isEmpty(format)){
-			simpleDateFormat = new SimpleDateFormat(format);
-		}
-		Calendar calendar = Calendar.getInstance();
-		return simpleDateFormat.format(calendar.getTime());
+		return transfersDateTostr(new Date(),format);
 	}
 
 	/** 
@@ -70,11 +67,11 @@ public class PublicTools {
 	* @param format 格式化,默认yyyy-MM-dd HH:mm:ss
 	*/
 	public static String transfersDateTostr(Date date, String format){
-		if(format == null || "".equals(format)){
-			format = "yyyy-MM-dd HH:mm:ss";
+		if(isEmpty(format)){
+			return Golbal.FORMAT_DATE_1.format(date);
+		} else {
+			return new SimpleDateFormat(format).format(date);
 		}
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
-		return simpleDateFormat.format(date);
 	}
 
 	/**
@@ -122,16 +119,15 @@ public class PublicTools {
 	/**
 	 * 将Object类型转化为double 
 	 */
-	public static Double cvToDouble(Object obj) {
+	public static Double cvToDouble(Object obj) throws NumberFormatException{
 		return obj == null ? 0 : Double.parseDouble(obj.toString());
 	}
 
 	/**
 	 * 将double格式化四位小数
 	 */
-	public static Double cvToDouble4(Object num) {
-		java.text.DecimalFormat df = Golbal.FORMAT_DOUBLE_1;
-		String numStr = df.format(cvToDouble(num));
+	public static Double cvToDouble4(Object num) throws NumberFormatException{
+		String numStr = Golbal.FORMAT_DOUBLE_1.format(cvToDouble(num));
 		return Double.parseDouble(numStr);
 	}
 

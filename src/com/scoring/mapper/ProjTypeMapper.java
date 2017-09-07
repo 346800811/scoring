@@ -9,11 +9,7 @@ public interface ProjTypeMapper {
 
 	int insert(ProjType record);
 
-	int insertSelective(ProjType record);
-
 	ProjType selectByPrimaryKey(Integer type);
-
-	int updateByPrimaryKeySelective(ProjType record);
 
 	int updateByPrimaryKey(ProjType record);
 

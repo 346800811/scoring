@@ -11,9 +11,7 @@
 		id, name, type, passwd
 	</sql>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List" />
-		from sc_user
+		select <include refid="Base_Column_List" /> from sc_user
 		where id = #{id,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -21,69 +19,43 @@
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.scoring.model.User">
-		insert into sc_user (id, name, type,
-		passwd)
-		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},
-		#{passwd,jdbcType=VARCHAR})
+		insert into sc_user (id, name, type, passwd)
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{passwd,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="com.scoring.model.User">
 		insert into sc_user
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				id,
-			</if>
-			<if test="name != null">
-				name,
-			</if>
-			<if test="type != null">
-				type,
-			</if>
-			<if test="passwd != null">
-				passwd,
-			</if>
+			<if test="id != null"> id, </if>
+			<if test="name != null"> name, </if>
+			<if test="type != null"> type, </if>
+			<if test="passwd != null"> passwd, </if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				#{id,jdbcType=INTEGER},
-			</if>
-			<if test="name != null">
-				#{name,jdbcType=VARCHAR},
-			</if>
-			<if test="type != null">
-				#{type,jdbcType=INTEGER},
-			</if>
-			<if test="passwd != null">
-				#{passwd,jdbcType=VARCHAR},
-			</if>
+			<if test="id != null"> #{id,jdbcType=INTEGER}, </if>
+			<if test="name != null"> #{name,jdbcType=VARCHAR}, </if>
+			<if test="type != null"> #{type,jdbcType=INTEGER}, </if>
+			<if test="passwd != null"> #{passwd,jdbcType=VARCHAR}, </if>
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective" parameterType="com.scoring.model.User">
 		update sc_user
 		<set>
-			<if test="name != null">
-				name = #{name,jdbcType=VARCHAR},
-			</if>
-			<if test="type != null">
-				type = #{type,jdbcType=INTEGER},
-			</if>
-			<if test="passwd != null">
-				passwd = #{passwd,jdbcType=VARCHAR},
-			</if>
+			<if test="name != null"> name = #{name,jdbcType=VARCHAR}, </if>
+			<if test="type != null"> type = #{type,jdbcType=INTEGER}, </if>
+			<if test="passwd != null"> passwd = #{passwd,jdbcType=VARCHAR}, </if>
 		</set>
 		where id = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.scoring.model.User">
 		update sc_user
-		set name = #{name,jdbcType=VARCHAR},
-		type = #{type,jdbcType=INTEGER},
-		passwd = #{passwd,jdbcType=VARCHAR}
+		set name = #{name,jdbcType=VARCHAR}, type = #{type,jdbcType=INTEGER}, passwd = #{passwd,jdbcType=VARCHAR}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
-	<select id="list" resultType="User">
-		select * from sc_user
+	<select id="list" resultType="com.scoring.model.User">
+		select <include refid="Base_Column_List" /> from sc_user
 	</select>
-	<select id="check" parameterType="com.scoring.model.User" resultType="BaseResultMap">
-		select * from sc_user where name = #{name,jdbcType=VARCHAR} and passwd = #{passwd,jdbcType=VARCHAR} and
-		type = #{type,jdbcType=INTEGER}
+	<select id="check" parameterType="com.scoring.model.User" resultType="com.scoring.model.User">
+		select <include refid="Base_Column_List" /> from sc_user
+		where name = #{name,jdbcType=VARCHAR} and passwd = #{passwd,jdbcType=VARCHAR} and type = #{type,jdbcType=INTEGER}
 	</select>
 </mapper>
