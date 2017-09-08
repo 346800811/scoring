@@ -5,11 +5,15 @@
 	<tr>
 		<td>id</td>
 		<td>name</td>
+		<td>type</td>
+		<td>passwd</td>
 	</tr>
 	<c:forEach items="${cs}" var="o" varStatus="st">
 		<tr>
 			<td>${o.id}</td>
 			<td>${o.name}</td>
+			<td>${o.type}</td>
+			<td>${o.passwd}</td>
 		</tr>
 	</c:forEach>
 </table>

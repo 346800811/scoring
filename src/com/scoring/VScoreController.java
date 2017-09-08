@@ -48,7 +48,7 @@ public class VScoreController {
 		mav.addObject("marks", marks);
 		mav.addObject("scarr", scarr);
 		// 放入jsp路径
-		mav.setViewName("vscoring");
+		mav.setViewName("scored/vscoring");
 		return mav;
 	}
 

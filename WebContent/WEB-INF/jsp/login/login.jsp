@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <body>
-	<form name="channelform" action="login/in" onsubmit="return validate_channel_info(this);" method="post">
+	<form name="channelform" action="login/check" onsubmit="return validate_channel_info(this);" method="post">
 	名字:
 	<input type="text" name="username" /> <br>
 	密码:

@@ -35,9 +35,8 @@ public class UserController {
 	public ModelAndView listUser(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		List<User> cs = userService.list();
-
 		mav.addObject("cs", cs);
-		mav.setViewName("listCategory");
+		mav.setViewName("login/listUser");
 		return mav;
 	}
 
@@ -46,12 +45,12 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		List<ProjType> list = projTypeService.list();
 		mav.addObject("projType", list);
-		mav.setViewName("login");
+		mav.setViewName("login/login");
 		return mav;
 	}
 
-	@RequestMapping("/login/in")
-	public ModelAndView logIn(HttpServletRequest request) {
+	@RequestMapping("/login/check")
+	public ModelAndView loginCheck(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		String username = request.getParameter("username");
 		String passwd = request.getParameter("passwd");
@@ -61,14 +60,14 @@ public class UserController {
 		user.setPasswd(passwd);
 		user.setType(Integer.parseInt(projtype));
 		if (userService.check(user)) { // 用户、密码、类型验证通过
-			logger.info("login true");
+			logger.info("login success : " + user);
 			PublicTools.setCurrentUser(request, user, logger);
 			mav.addObject("result", true);
-			mav.setViewName("loginSuccess");
+			mav.setViewName("login/loginSuccess");
 		} else {
-			logger.info("login false");
+			logger.info("login false : " + user);
 			mav.addObject("result", false);
-			mav.setViewName("loginSuccess");
+			mav.setViewName("login/loginSuccess");
 		}
 		return mav;
 	}
